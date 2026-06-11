@@ -21,10 +21,15 @@ export default {
       keyframes: {
         marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
         fadeUp: { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'none' } },
+        shimmer: {
+          '0%': { backgroundPosition: '200% center' },
+          '100%': { backgroundPosition: '-200% center' },
+        },
       },
       animation: {
         marquee: 'marquee 30s linear infinite',
         fadeUp: 'fadeUp .9s .15s cubic-bezier(.2,.7,.2,1) forwards',
+        shimmer: 'shimmer 8s linear infinite',
       },
     },
   },

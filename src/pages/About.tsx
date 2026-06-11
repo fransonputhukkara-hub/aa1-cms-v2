@@ -43,15 +43,15 @@ export default function About() {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(40,9,17,0.7),rgba(78,19,32,0.9))] z-0" />
         <div className="absolute inset-0 grain opacity-[0.05] pointer-events-none" />
 
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <span className="eyebrow !text-gold-soft mb-3 inline-block">Since 1974</span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight mb-5 leading-tight">
+        <Reveal className="relative z-10 max-w-2xl mx-auto">
+          <span className="eyebrow mb-3 inline-block">Since 1974</span>
+          <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-serif leading-[1.1] mb-6">
             {about.heroTitle}
           </h1>
           <p className="text-white/80 text-base sm:text-lg font-light leading-relaxed max-w-xl mx-auto">
             {about.heroSubtitle}
           </p>
-        </div>
+        </Reveal>
       </div>
 
       {/* Narrative Section */}
@@ -160,9 +160,9 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-r from-wine-deep/30 to-transparent" />
             </div>
           </div>
-          <div className="w-full md:w-1/2 p-8 sm:p-12 text-white flex flex-col justify-center">
-            <span className="eyebrow !text-gold-soft mb-2">Weaver Spotlight</span>
-            <h3 className="text-3xl font-serif font-medium mb-4">Master Weaver Kuppusamy</h3>
+          <div className="w-full md:w-1/2 flex flex-col justify-center items-start text-left z-10 p-8 sm:p-12">
+            <span className="eyebrow mb-2">Weaver Spotlight</span>
+            <h2 className="text-3xl sm:text-4xl font-serif mb-6 text-white leading-tight">Master Weaver Kuppusamy</h2>
             <p className="text-white/80 text-sm font-light leading-relaxed mb-6">
               "I have been sitting at the handloom since I was fourteen. My father taught me, and his father taught him. To me, a loom is not a machine—it is a conversation. When we pull the shuttle, we are weaving our thoughts and history into the cloth. I am proud to see my sarees reaching homes across India through A1 Sanskriti."
             </p>

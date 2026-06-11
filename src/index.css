@@ -17,7 +17,7 @@
 
 @layer components {
   .eyebrow {
-    @apply text-[11px] tracking-[0.42em] uppercase text-gold font-medium;
+    @apply text-[11px] tracking-[0.42em] uppercase font-medium bg-gradient-to-r from-gold via-[#ffe8b3] to-gold bg-[length:200%_auto] text-transparent bg-clip-text animate-shimmer;
   }
   .btn {
     @apply inline-block font-sans text-xs tracking-[0.2em] uppercase font-medium px-9 py-4 rounded-sm cursor-pointer border border-transparent transition-all duration-300;

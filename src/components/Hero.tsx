@@ -132,7 +132,7 @@ export default function Hero() {
       <section className="min-h-[calc(100vh-80px)] w-full flex flex-col md:flex-row-reverse items-stretch relative overflow-hidden bg-wine-deep text-white py-12 md:py-0">
         {/* Right Side: Context & Quotes */}
         <Reveal className="w-full md:w-[45%] flex flex-col justify-center p-8 sm:p-12 lg:p-20 relative z-10 bg-wine-deep">
-          <span className="eyebrow !text-gold-soft mb-2">{hero.section2.eyebrow}</span>
+          <span className="eyebrow mb-2">{hero.section2.eyebrow}</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium mb-6 leading-tight">
             {hero.section2.title}
           </h2>
@@ -204,7 +204,7 @@ export default function Hero() {
         <Reveal className="w-full md:w-[45%] flex flex-col justify-center p-8 sm:p-12 lg:p-20 relative z-10 bg-wine-deep">
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="h-px w-6 bg-gold-soft" />
-            <span className="text-[10px] tracking-[0.3em] uppercase text-gold-soft font-semibold">{hero.section4.eyebrow}</span>
+            <span className="eyebrow">{hero.section4.eyebrow}</span>
           </div>
           
           <h2 className="text-4xl sm:text-5xl font-serif font-medium mb-6 leading-tight">
