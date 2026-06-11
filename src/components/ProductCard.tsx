@@ -39,11 +39,46 @@ export default function ProductCard({
     setIsHovered(false);
   };
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    if (e.touches && e.touches.length > 0) {
+      const touch = e.touches[0];
+      const x = (touch.clientX - rect.left) / rect.width - 0.5;
+      const y = (touch.clientY - rect.top) / rect.height - 0.5;
+      setTilt({ x: x * 10, y: -y * 10 });
+      setIsHovered(true);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    if (e.touches && e.touches.length > 0) {
+      const touch = e.touches[0];
+      const x = (touch.clientX - rect.left) / rect.width - 0.5;
+      const y = (touch.clientY - rect.top) / rect.height - 0.5;
+      const clampedX = Math.max(-0.5, Math.min(0.5, x));
+      const clampedY = Math.max(-0.5, Math.min(0.5, y));
+      setTilt({ x: clampedX * 10, y: -clampedY * 10 });
+      setIsHovered(true);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTilt({ x: 0, y: 0 });
+    setIsHovered(false);
+  };
+
   return (
     <Link to={`/product/${product.id}`} className="group block cursor-pointer" style={{ perspective: '1000px' }}>
       <div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
         className={`relative aspect-[3/4] rounded overflow-hidden mb-3.5 ${fb} transition-all duration-300`}
         style={{
           transform: isHovered
@@ -70,7 +105,9 @@ export default function ProductCard({
         />
         <button
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); add(product); }}
-          className="absolute left-3 right-3 bottom-3 z-[3] bg-cream/95 text-wine-deep font-sans text-[11px] tracking-[0.18em] uppercase py-3 rounded-sm font-semibold opacity-0 translate-y-2.5 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 hover:!bg-wine hover:!text-white"
+          className={`absolute left-3 right-3 bottom-3 z-[3] bg-cream/95 text-wine-deep font-sans text-[11px] tracking-[0.18em] uppercase py-3 rounded-sm font-semibold transition-all duration-300 hover:!bg-wine hover:!text-white ${
+            isHovered ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-2.5 pointer-events-none'
+          }`}
         >
           {multi ? 'View colours' : 'Add to bag'}
         </button>

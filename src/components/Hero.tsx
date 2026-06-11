@@ -23,11 +23,46 @@ function TiltImage({ src, alt, className = '' }: { src: string; alt: string; cla
     setIsHovered(false);
   };
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    if (e.touches && e.touches.length > 0) {
+      const touch = e.touches[0];
+      const x = (touch.clientX - rect.left) / rect.width - 0.5;
+      const y = (touch.clientY - rect.top) / rect.height - 0.5;
+      setTilt({ x: x * 10, y: -y * 10 });
+      setIsHovered(true);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    if (e.touches && e.touches.length > 0) {
+      const touch = e.touches[0];
+      const x = (touch.clientX - rect.left) / rect.width - 0.5;
+      const y = (touch.clientY - rect.top) / rect.height - 0.5;
+      const clampedX = Math.max(-0.5, Math.min(0.5, x));
+      const clampedY = Math.max(-0.5, Math.min(0.5, y));
+      setTilt({ x: clampedX * 10, y: -clampedY * 10 });
+      setIsHovered(true);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTilt({ x: 0, y: 0 });
+    setIsHovered(false);
+  };
+
   return (
     <div
       className="relative w-full h-full overflow-hidden rounded-sm group cursor-pointer shadow-2xl transition-all duration-300"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
       style={{ perspective: '1000px' }}
     >
       <img
@@ -42,7 +77,12 @@ function TiltImage({ src, alt, className = '' }: { src: string; alt: string; cla
         }}
       />
       {/* Light sweep glare effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 pointer-events-none" />
+      <div 
+        className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/12 to-white/0 pointer-events-none transition-transform duration-1000 ease-out" 
+        style={{
+          transform: isHovered ? 'translateX(100%)' : 'translateX(-100%)',
+        }}
+      />
     </div>
   );
 }
