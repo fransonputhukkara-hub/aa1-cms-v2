@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for bestsellers carousel */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+@layer base {
+  body {
+    @apply bg-cream text-ink font-sans antialiased overflow-x-hidden;
+  }
+  h1, h2, h3 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[11px] tracking-[0.42em] uppercase text-gold font-medium;
+  }
+  .btn {
+    @apply inline-block font-sans text-xs tracking-[0.2em] uppercase font-medium px-9 py-4 rounded-sm cursor-pointer border border-transparent transition-all duration-300;
+  }
+  .btn-gold {
+    @apply bg-gold text-wine-deep hover:bg-gold-soft hover:-translate-y-0.5;
+  }
+  .btn-ghost {
+    @apply border-white/50 text-white hover:bg-white hover:text-wine hover:border-white;
+  }
+  /* Woven-silk gradient fallbacks (shown behind product photos while they load) */
+  .silk { @apply bg-gradient-to-br from-[#7a2336] to-[#4e1320]; }
+  .s2   { @apply bg-gradient-to-br from-[#b07a36] to-[#6a3d18]; }
+  .s3   { @apply bg-gradient-to-br from-[#356b4f] to-[#173528]; }
+  .s4   { @apply bg-gradient-to-br from-[#34467c] to-[#1a2647]; }
+}
+
+@layer utilities {
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Lenis Smooth Scroll Overrides */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
