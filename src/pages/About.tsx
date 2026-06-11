@@ -43,7 +43,7 @@ export default function About() {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(40,9,17,0.7),rgba(78,19,32,0.9))] z-0" />
         <div className="absolute inset-0 grain opacity-[0.05] pointer-events-none" />
 
-        <Reveal className="relative z-10 max-w-2xl mx-auto">
+        <div className="relative z-10 max-w-2xl mx-auto">
           <span className="eyebrow mb-3 inline-block">Since 1974</span>
           <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-serif leading-[1.1] mb-6">
             {about.heroTitle}
@@ -51,7 +51,7 @@ export default function About() {
           <p className="text-white/80 text-base sm:text-lg font-light leading-relaxed max-w-xl mx-auto">
             {about.heroSubtitle}
           </p>
-        </Reveal>
+        </div>
       </div>
 
       {/* Narrative Section */}

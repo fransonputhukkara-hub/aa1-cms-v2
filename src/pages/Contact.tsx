@@ -72,7 +72,7 @@ export default function Contact() {
       <div className="bg-wine-deep text-white py-16 px-5 sm:px-7 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(40,9,17,0.7),rgba(78,19,32,0.85))] z-0" />
         <div className="absolute inset-0 grain opacity-[0.05] pointer-events-none" />
-        <Reveal className="w-full md:w-[45%] flex flex-col justify-center p-8 sm:p-12 lg:p-20 bg-wine-deep text-white">
+        <div className="relative z-10 max-w-3xl mx-auto">
           <span className="eyebrow mb-2 inline-block">Reach Out</span>
           <h1 className="text-4xl sm:text-5xl font-medium tracking-tight mb-4">
             Connect with <em className="italic text-gold-soft font-serif">A1 Sanskriti Silks</em>
